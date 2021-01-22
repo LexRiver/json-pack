@@ -1,6 +1,6 @@
 {
     "name": "@lexriver/json-pack",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Pack json object to string by compressing keys",
     "main": "out/index.js",
     "types": "out/index.d.ts",
