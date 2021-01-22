@@ -1,0 +1,30 @@
+{
+    "name": "@lexriver/json-pack",
+    "version": "1.0.0",
+    "description": "Pack json object to string by compressing keys",
+    "main": "out/index.js",
+    "types": "out/index.d.ts",
+    "scripts": {
+        "test": "jest",
+        "build": "tsc"
+    },
+    "keywords": [
+        "json",
+        "obect",
+        "pack",
+        "compress",
+        "typescript"
+    ],
+    "author": "LexRiver <LexRiver@gmail.com> (https://github.com/LexRiver/)",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LexRiver/json-pack.git"
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.20",
+        "jest": "^26.6.3",
+        "ts-jest": "^26.4.4",
+        "typescript": "^4.1.3"
+    }
+}
