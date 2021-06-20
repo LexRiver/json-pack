@@ -52,6 +52,7 @@ export module JsonPack{
     }
 
     export function unpack(packedString:string){
+        if(typeof packedString !== 'string') throw new Error('not a string!')
         if(!packedString.startsWith(header)) throw new Error('not a pack! ')
         let jsonString = packedString.substr(header.length)
         let x = JSON.parse(jsonString)

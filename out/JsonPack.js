@@ -84,6 +84,8 @@ var JsonPack;
     }
     function unpack(packedString) {
         var e_2, _a;
+        if (typeof packedString !== 'string')
+            throw new Error('not a string!');
         if (!packedString.startsWith(header))
             throw new Error('not a pack! ');
         var jsonString = packedString.substr(header.length);
