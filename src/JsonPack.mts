@@ -1,4 +1,4 @@
-import { KeysMap } from "./KeysMap"
+import { KeysMap } from "./KeysMap.mjs"
 
 function isArray(x: any): boolean {
     return Array.isArray(x)
@@ -53,7 +53,7 @@ export module JsonPack{
 
     export function unpack(packedString:string){
         if(typeof packedString !== 'string') throw new Error('not a string!')
-        if(!packedString.startsWith(header)) throw new Error('not a pack! ')
+        if(!packedString.startsWith(header)) throw new Error('not a pack!')
         let jsonString = packedString.substr(header.length)
         let x = JSON.parse(jsonString)
         if(!x.keys) throw new Error('no keys!') 

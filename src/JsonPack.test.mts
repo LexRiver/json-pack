@@ -1,4 +1,5 @@
-import { JsonPack } from "./JsonPack"
+import { expect, test } from 'vitest'
+import { JsonPack } from "./JsonPack.mjs"
 
 test('simple', () => {
     const original = [
