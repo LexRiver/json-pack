@@ -65,7 +65,7 @@ export module JsonPack{
         let jsonString = packedString.substr(header.length)
         let x = JSON.parse(jsonString)
         if(!x.keys) throw new Error('no keys!') 
-        if(!x.data) throw new Error('no data!')
+        if(!Object.prototype.hasOwnProperty.call(x, 'data')) throw new Error('no data!')
         
         // so x.keys is array of arrays
         let keyByCode = new Map<string,string>()

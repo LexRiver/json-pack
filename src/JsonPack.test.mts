@@ -1,6 +1,10 @@
 import { expect, test } from 'vitest'
 import { JsonPack } from "./JsonPack.mjs"
 
+test.each([false, 0, '', null])('round-trips falsy top-level value %j', (original) => {
+    expect(JsonPack.unpack(JsonPack.pack(original))).toBe(original)
+})
+
 test('preserves __proto__ as an own property without changing the prototype', () => {
     const original = JSON.parse('{"__proto__":{"polluted":true},"nested":{"__proto__":"value"}}')
 
