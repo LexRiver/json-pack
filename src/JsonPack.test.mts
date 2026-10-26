@@ -1,6 +1,19 @@
 import { expect, test } from 'vitest'
 import { JsonPack } from "./JsonPack.mjs"
 
+test('preserves __proto__ as an own property without changing the prototype', () => {
+    const original = JSON.parse('{"__proto__":{"polluted":true},"nested":{"__proto__":"value"}}')
+
+    const unpacked = JsonPack.unpack(JsonPack.pack(original))
+
+    expect(unpacked).toEqual(original)
+    expect(Object.prototype.hasOwnProperty.call(unpacked, '__proto__')).toBe(true)
+    expect(Object.getPrototypeOf(unpacked)).toBe(Object.prototype)
+    expect(Object.prototype.hasOwnProperty.call(unpacked.nested, '__proto__')).toBe(true)
+    expect(Object.getPrototypeOf(unpacked.nested)).toBe(Object.prototype)
+    expect(({} as { polluted?: boolean }).polluted).toBeUndefined()
+})
+
 test('simple', () => {
     const original = [
         {firstName:'John', lastName:'Smith'},

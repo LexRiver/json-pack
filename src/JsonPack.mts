@@ -14,6 +14,15 @@ function isObjectWithKeys(o:any):boolean {
     return isObject(o) && Object.keys(o).length>0
 }
 
+function setOwnProperty(target: object, key: string, value: any): void {
+    Object.defineProperty(target, key, {
+        value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+    })
+}
+
 
 export module JsonPack{
 
@@ -41,8 +50,7 @@ export module JsonPack{
                 }
                 let newKey = keys.get(key)
                 if(newKey !== undefined){
-                    result[newKey] = packAny(o[key], keys)
-                    
+                    setOwnProperty(result, newKey, packAny(o[key], keys))
                 }
             }
             return result
@@ -77,7 +85,7 @@ export module JsonPack{
             for(let key of Object.keys(o)){
                 let newKey = keyByCode.get(key)
                 if(newKey !== undefined){
-                    result[newKey] = unpackAny(o[key], keyByCode)
+                    setOwnProperty(result, newKey, unpackAny(o[key], keyByCode))
                 }
             }
             return result
